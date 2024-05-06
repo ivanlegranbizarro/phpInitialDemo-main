@@ -6,7 +6,7 @@ class Task extends Model
   public function __construct()
   {
     parent::__construct();
-    $this->_setTable('task');
+    $this->_setTable('tasks');
   }
 
   public function getAllTasks()
