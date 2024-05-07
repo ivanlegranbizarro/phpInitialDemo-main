@@ -22,6 +22,11 @@ class Task
     }
 
     $jsonString = file_get_contents($this->taskFile);
-    $this->tasks = json_decode($jsonString, true) ?? [];
+    $this->tasks = json_decode($jsonString, false) ?? [];
+  }
+
+  public function getAllTasks(): array
+  {
+    return $this->tasks;
   }
 }
