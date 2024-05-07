@@ -1,6 +1,6 @@
 <?php
 
-class Task
+class Task extends Model
 {
 
   protected string $taskFile = ROOT_PATH . '/app/db/tasks.json';
