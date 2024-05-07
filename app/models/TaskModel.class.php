@@ -1,19 +1,24 @@
 <?php
 
-class Task extends Model
+class Task
 {
+
+  protected string $taskFile = ROOT_PATH . '/app/db/tasks.json';
+  protected array $tasks;
 
   public function __construct()
   {
-    parent::__construct();
-    $this->_setTable('tasks');
+    $this->loadTasks(); // Load tasks from JSON
   }
 
-  public function getAllTasks()
+  private function loadTasks(): void
   {
-    $sql = 'SELECT * FROM ' . $this->_table;
-    $statement = $this->_dbh->prepare($sql);
-    $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_OBJ);
+    if (!file_exists($this->taskFile)) {
+      // Archivo JSON no existe, crear uno vacío
+      file_put_contents($this->taskFile, json_encode([]));
+    }
+
+    $jsonString = file_get_contents($this->taskFile);
+    $this->tasks = json_decode($jsonString, true) ?? [];
   }
 }
