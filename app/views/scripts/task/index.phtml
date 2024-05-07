@@ -1,14 +1,19 @@
-content from the test/index.phtml file :)
 <?php
 
 $allTasks = $this->allTasks;
+?>
 
 
-foreach ($allTasks as $task) {
-  echo 'Task ID: ' . $task->id . '<br>';
-  echo 'Task Name: ' . $task->name . '<br>';
-  echo 'Username: ' . $task->username . '<br>';
-  echo 'Created Time: ' . $task->create_time . '<br>';
-  echo 'Completed Time: ' . ($task->completed_time ?? 'Not completed') . '<br>';
-  echo '<hr>';
-}
+<div class="container mx-auto">
+  <?php foreach ($allTasks as $task) : ?>
+    <div class="bg-white shadow rounded-lg p-6 mb-4">
+      <h2 class="text-xl font-semibold">Task ID: <?php echo $task->id; ?></h2>
+      <p class="text-gray-700">
+        <strong>Task Name:</strong> <?php echo $task->name; ?><br>
+        <strong>Username:</strong> <?php echo $task->username; ?><br>
+        <strong>Created Time:</strong> <?php echo $task->create_time; ?><br>
+        <strong>Completed Time:</strong> <?php echo $task->completed_time ?? 'Not completed'; ?><br>
+      </p>
+    </div>
+  <?php endforeach; ?>
+</div>
