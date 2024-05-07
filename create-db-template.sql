@@ -8,7 +8,7 @@ CREATE TABLE
   tasks (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    completed_time TIMESTAMP DEFAULT NULL,
+    completed_time TIMESTAMP,
     name VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL
   );
