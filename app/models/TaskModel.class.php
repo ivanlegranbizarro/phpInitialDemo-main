@@ -8,6 +8,9 @@ class Task
 
   public function __construct()
   {
+    if (!is_dir(ROOT_PATH . '/app/db/')) {
+      mkdir(ROOT_PATH . '/app/db/', 0755, true);
+    }
     $this->loadTasks(); // Load tasks from JSON
   }
 
