@@ -9,6 +9,6 @@ class TaskController extends Controller
   {
     $taskModel = new Task;
     $allTasks = $taskModel->getAllTasks();
-    return $this->view->tasks = $allTasks;
+    $this->view->allTasks = $allTasks;
   }
 }

@@ -1,1 +1,14 @@
 content from the test/index.phtml file :)
+<?php
+
+$allTasks = $this->allTasks;
+
+
+foreach ($allTasks as $task) {
+  echo 'Task ID: ' . $task->id . '<br>';
+  echo 'Task Name: ' . $task->name . '<br>';
+  echo 'Username: ' . $task->username . '<br>';
+  echo 'Created Time: ' . $task->create_time . '<br>';
+  echo 'Completed Time: ' . ($task->completed_time ?? 'Not completed') . '<br>';
+  echo '<hr>';
+}
