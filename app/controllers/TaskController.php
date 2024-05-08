@@ -8,7 +8,7 @@ class TaskController extends Controller
   public function indexAction()
   {
     $taskModel = new Task;
-    $allTasks = $taskModel->getAllTasks();
+    $allTasks = $taskModel->fetchAll();
     $this->view->allTasks = $allTasks;
   }
 }

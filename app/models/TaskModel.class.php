@@ -25,7 +25,7 @@ class Task extends Model
     $this->tasks = json_decode($jsonString, false) ?? [];
   }
 
-  public function getAllTasks(): array
+  public function fetchAll(): array
   {
     return $this->tasks;
   }
