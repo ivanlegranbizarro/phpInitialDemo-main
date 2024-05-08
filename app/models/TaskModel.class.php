@@ -29,4 +29,10 @@ class Task extends Model
   {
     return $this->tasks;
   }
+
+
+  //TODO reescribir estos métodos
+  // fetchOne
+  //save
+  //delete
 }
