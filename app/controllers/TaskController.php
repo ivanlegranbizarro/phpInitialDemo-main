@@ -14,10 +14,9 @@ class TaskController extends Controller
 
   public function showAction()
   {
-    // Asegúrate de que el parámetro 'id' ha sido pasado correctamente
     if (isset($this->_namedParameters['id'])) {
       $taskModel = new Task;
-      $id = $this->_namedParameters['id'];  // Obtén el parámetro del Router
+      $id = $this->_namedParameters['id'];  // Esto viene del Router de este 'framework'. Es la manera que tiene de pillar el parámetro task/:id del routes.php
       $taskDetail = $taskModel->fetchOne($id);
       $this->view->taskDetail = $taskDetail;
     } else {
