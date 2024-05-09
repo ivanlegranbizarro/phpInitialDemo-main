@@ -64,7 +64,7 @@ class Task extends Model
   public function delete($id): bool
   {
     foreach ($this->tasks as $key => $task) {
-      if ($task->id === $id) {
+      if ($task->id == $id) {
         unset($this->tasks[$key]);
         return true;
       }
