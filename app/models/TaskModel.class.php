@@ -30,10 +30,10 @@ class Task extends Model
     return $this->tasks;
   }
 
-  public function fetchOne($id): ?object
+  public function fetchOne($id)
   {
     foreach ($this->tasks as $task) {
-      if ($task->id === $id) {
+      if ($task->id == $id) {
         return $task;
       }
     }
