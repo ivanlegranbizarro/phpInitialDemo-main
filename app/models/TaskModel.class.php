@@ -44,11 +44,16 @@ class Task extends Model
     // Asignar un nuevo ID basado en el tamaño del array actual
     $newId = count($this->tasks) + 1;
 
+    // Obtener la fecha y hora actual para el create_time
+    $currentDateTime = date('Y-m-d H:i:s');
+
     // Crear una nueva tarea como objeto genérico (stdClass)
     $newTask = (object) [
       'id' => $newId,
       'name' => $data['name'],
-      'description' => $data['description']
+      'username' => $data['username'],
+      'create_time' => $currentDateTime,
+      'completed_time' => null
     ];
 
     // Agregar la nueva tarea a la lista de tareas
