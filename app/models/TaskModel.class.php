@@ -68,12 +68,17 @@ class Task extends Model
 
   public function delete($id): bool
   {
+    // Buscar la tarea por ID y eliminarla
     foreach ($this->tasks as $key => $task) {
       if ($task->id == $id) {
-        unset($this->tasks[$key]);
-        return true;
+        unset($this->tasks[$key]); // Eliminar la tarea
+        break;
       }
-      return false;
     }
+
+    // Guardar los cambios en el archivo o base de datos
+    $result = file_put_contents($this->taskFile, json_encode(array_values($this->tasks))); // Reiniciar índices y guardar
+
+    return $result !== false; // Devolver true si se guardó con éxito
   }
 }

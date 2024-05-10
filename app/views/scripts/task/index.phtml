@@ -3,7 +3,6 @@
 $allTasks = $this->allTasks;
 ?>
 
-
 <div class="container mx-auto">
   <?php foreach ($allTasks as $task) : ?>
     <div class="bg-white shadow rounded-lg p-6 mb-4">
@@ -13,7 +12,13 @@ $allTasks = $this->allTasks;
         <strong>Username:</strong> <?php echo $task->username; ?><br>
         <strong>Created Time:</strong> <?php echo $task->create_time; ?><br>
         <strong>Completed Time:</strong> <?php echo $task->completed_time ?? 'Not completed'; ?><br>
+        <br/>
+        <br/>
       </p>
+
+      <!-- Formulario para borrar la tarea -->
+      <a href="/task/destroy/<?php echo $task->id; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarea?');" class="bg-red-500 text-white p-2 rounded">Eliminar Tasca</a>
+
     </div>
   <?php endforeach; ?>
 </div>
