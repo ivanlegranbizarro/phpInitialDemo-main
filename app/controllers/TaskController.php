@@ -57,6 +57,50 @@ class TaskController extends Controller
     }
   }
 
+  public function editAction()
+  {
+    if ($this->getRequest()->isPost()) {
+      // Si es POST, actualizar la tarea
+      $taskId = $this->_getParam('task_id'); // Obtener el ID de la tarea del POST
+      $name = $this->_getParam('name'); // Recuperar el nombre del formulario
+      $username = $this->_getParam('username'); // Recuperar el nombre de usuario del formulario
+
+      if (empty($name) || empty($username)) {
+        echo "El nom de la tasca i el nom d'usuari són necessaris.";
+        return;
+      }
+
+      // Construir los datos para la actualización
+      $taskData = [
+        'id' => $taskId,
+        'name' => $name,
+        'username' => $username
+      ];
+
+      if ($this->taskModel->update($taskData)) {
+        echo "Tasca actualitzada amb èxit.";
+        header('Location: /'); // Redirige después de actualizar
+      } else {
+        echo "Error en actualitzar la tasca.";
+      }
+    } else {
+      // Si no es POST, mostrar la vista de edición
+      if (isset($this->_namedParameters['id'])) {
+        $id = $this->_namedParameters['id']; // Obtener el ID de la URL
+        $taskDetail = $this->taskModel->fetchOne($id);
+
+        if ($taskDetail) {
+          $this->view->taskDetail = $taskDetail; // Pasar la tarea a la vista
+        } else {
+          throw new Exception("Tasca no trobada.");
+        }
+      } else {
+        throw new Exception("Paràmetre 'id' no trobat.");
+      }
+    }
+  }
+
+
   public function destroyAction()
   {
     if ($this->getRequest()->isPost()) {

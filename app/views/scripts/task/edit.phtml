@@ -1,0 +1,18 @@
+<?php
+// $taskDetail debería contener la información de la tarea que quieres editar
+$taskDetail = $this->taskDetail;
+
+?>
+<h1>Edita la teva tasca</h1>
+
+<form method="post">
+  <input type="hidden" name="task_id" value="<?php echo $taskDetail->id; ?>">
+
+  <label per="name">Nom de la Tasca:</label>
+  <input type="text" id="name" name="name" required value="<?php echo $taskDetail->name; ?>"><br>
+
+  <label per="username">Nom d'Usuari:</label>
+  <input type="text" id="username" name="username" required value="<?php echo $taskDetail->username; ?>"><br>
+
+  <input type="submit" value="Editar">
+</form>

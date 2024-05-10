@@ -66,6 +66,29 @@ class Task extends Model
     return $result !== false; // file_put_contents devuelve false en caso de error
   }
 
+  public function update($data = array())
+  {
+
+    foreach ($this->tasks as $task) {
+      if ($task->id == $data['id']) {
+        // Obtener la fecha y hora actual para el create_time
+        $currentDateTime = date('Y-m-d H:i:s');
+
+        // Actualizar la task
+        $task->id = $data['id'];
+        $task->name = $data['name'];
+        $task->username = $data['username'];
+        $task->create_time = $data['create_time'];
+
+        // Guardar el array actualizado de tareas en el archivo JSON
+        $result = file_put_contents($this->taskFile, json_encode($this->tasks));
+
+        return $result !== false; // Devolver true si la actualización fue exitosa
+      }
+    }
+  }
+
+
   public function delete($id): bool
   {
     // Buscar la tarea por ID y eliminarla
