@@ -11,6 +11,7 @@
  */
 $routes = array(
   '/' => 'task#index',
+  '/task/create' => 'task#create',
   '/task/:id' => 'task#show',
   '/test' => 'test#index'
 );

@@ -23,4 +23,9 @@ class TaskController extends Controller
       throw new Exception("Parámetro 'id' no encontrado.");
     }
   }
+
+  public function createAction()
+  {
+    $this->view;
+  }
 }
