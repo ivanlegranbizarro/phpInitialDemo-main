@@ -17,7 +17,10 @@ $allTasks = $this->allTasks;
       </p>
 
       <!-- Formulario para borrar la tarea -->
-      <a href="/task/destroy/<?php echo $task->id; ?>" class="bg-red-500 text-white p-2 rounded">Eliminar Tasca</a>
+      <form action="/task/destroy/<?php echo $task->id; ?>" method="post">
+        <input type="hidden" name="task_id" value="<?php echo $task->id; ?>">
+        <button type="submit" class="bg-red-500 text-white p-2 rounded">Eliminar Tasca</button>
+      </form>
 
     </div>
   <?php endforeach; ?>
